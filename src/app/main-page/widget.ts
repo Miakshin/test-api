@@ -13,30 +13,30 @@ export class Widget {
   ],
   "base": string;
   "main": {
-      "temp": number,
-      "pressure": number,
-      "humidity": number,
-      "temp_min": number,
-      "temp_max": number
+      "temp": number;
+      "pressure": number;
+      "humidity": number;
+      "temp_min": number;
+      "temp_max": number;
   },
-  "visibility": 10000,
+  "visibility": number;
   "wind": {
-      "speed": 4,
-      "deg": 160
+      "speed": number;
+      "deg": number;
   },
   "clouds": {
-      "all": 0
+      "all": number;
   },
-  "dt": 1522927800,
+  "dt": number;
   "sys": {
-      "type": 1,
-      "id": 7358,
-      "message": 0.0171,
-      "country": "UA",
-      "sunrise": 1522898697,
-      "sunset": 1522946223
+      "type": number;
+      "id": number;
+      "message": number;
+      "country": string;
+      "sunrise": number;
+      "sunset": number;
   },
-  "id": 703448,
-  "name": "Kiev",
-  "cod": 200
+  "id": number;
+  "name": string;
+  "cod": number;
 }
