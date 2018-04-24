@@ -2,7 +2,7 @@ export class Widget {
   "coord": {
       "lon": number;
       "lat": number;
-  },
+  };
   "weather": [
       {
           "id": number;
@@ -10,7 +10,7 @@ export class Widget {
           "description": string;
           "icon": string;
       }
-  ],
+  ];
   "base": string;
   "main": {
       "temp": number;
@@ -18,15 +18,15 @@ export class Widget {
       "humidity": number;
       "temp_min": number;
       "temp_max": number;
-  },
+  };
   "visibility": number;
   "wind": {
       "speed": number;
       "deg": number;
-  },
+  };
   "clouds": {
       "all": number;
-  },
+  };
   "dt": number;
   "sys": {
       "type": number;
@@ -35,7 +35,7 @@ export class Widget {
       "country": string;
       "sunrise": number;
       "sunset": number;
-  },
+  };
   "id": number;
   "name": string;
   "cod": number;

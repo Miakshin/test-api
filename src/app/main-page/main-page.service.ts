@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import {Widget} from './widget'
+
 
 @Injectable()
 
@@ -11,7 +13,7 @@ export class MainPageService {
 
   constructor(private http: HttpClient) { }
 
-  getWidgets : any (){
+  getWidgets (): Widget[]{
     return(
       [
         {
