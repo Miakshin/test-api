@@ -2,7 +2,7 @@
   <h1> Get weather from api</h1>
 </header>
 <main>
-  <div ngfor="let wiget of widgets" class="widget">
-    
+  <div *ngFor="let widget of widgets" class="widget" >
+    <p>City : {{ widget.name }}</p>
   </div>
 </main>

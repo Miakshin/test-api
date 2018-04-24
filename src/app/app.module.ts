@@ -14,7 +14,8 @@ import { MainPageService } from './main-page/main-page.service';
     MainPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     MainPageService
