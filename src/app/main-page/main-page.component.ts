@@ -14,8 +14,19 @@ export class MainPageComponent implements OnInit {
 
   constructor( private service : MainPageService ) { }
 
+  addCity(city){
+    this.service.addWidget(city);
+  }
+
   ngOnInit() {
-    this.widgets = this.service.getWidgets();
+    this.service.dbOpen()
+      .then(console.log)
+      .then(()=>{
+        this.service.getWidgets()
+          .then((widgets)=>{
+            this.widgets = widgets || []
+          })
+    })
   }
 
 }

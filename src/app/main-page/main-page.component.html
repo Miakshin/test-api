@@ -2,6 +2,10 @@
   <h1> Get weather from api</h1>
 </header>
 <main>
+  <form class="widget-input">
+    <input type="text" placeholder="input a city" #input>
+    <input type="button"  value="add" (click)="addCity(input.value)"/>
+  </form>
   <div *ngFor="let widget of widgets" class="widget" >
     <p>City : {{ widget.name }}</p>
   </div>
