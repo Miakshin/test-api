@@ -27,15 +27,15 @@ export class MainPageService {
     this.wetherSource.next(newData);
   }
 
-  dbOpen(): Promise {
+  dbOpen(): Promise<any> {
     return new Promise((res, rej) => {
-      const request = this.indexedDB.open(this.baseName , 10);
+      const request = this.indexedDB.open(this.baseName , 1);
       request.onsuccess = () => {
         this.db = request.result;
         res(this.db)
       }
 
-      request.onerror = (onerror) => {
+      request.onerror = (err) => {
         rej(err)
       }
 
@@ -43,16 +43,16 @@ export class MainPageService {
         this.db  = event.target.result;
 
         if(!this.db.objectStoreNames.contains(this.storeName)){
-          this.db.createObjectStore(this.storeName, { keyPath: "id", autoIncrement : true });
+          this.db.createObjectStore(this.storeName, { keyPath: "name" });
         }
         res(this.db)
       }
 
-    }
+    })
 
   }
 
-  addWidget (city): Widget {
+  addWidget (city): void {
     this.http.get(`${this.url}${city}${this.key}`)
       .subscribe((data)=>{
         const store : any = this.db.transaction([this.storeName], "readwrite")
@@ -68,7 +68,7 @@ export class MainPageService {
     })
   }
 
-  getWidgets() : Promise{
+  getWidgets() : Promise<any> {
     return new Promise((response, rej) => {
       const store :any = this.db.transaction([this.storeName], "readwrite")
         .objectStore(this.storeName)
@@ -82,22 +82,39 @@ export class MainPageService {
       store.onerror = (err) => {
         console.log(err);
       }
-    )
+    })
   }
 
-  deleteWidget(city) : any{
+  deleteWidget(city) : void{
     const store : any = this.db.transaction([this.storeName], "readwrite")
       .objectStore(this.storeName)
       .delete(city);
 
     store.onsuccess = () => {
-      console.log(succes)
       this.getWidgets();
     }
 
     store.onerror = (err) => {
       console.log(err);
     }
+  }
+
+  refreshWidget(city) : void{
+    this.http.get(`${this.url}${city}${this.key}`)
+      .subscribe((data)=>{
+        const store : any = this.db.transaction([this.storeName], "readwrite")
+          .objectStore(this.storeName)
+          .put(data);
+
+        store.onsuccess = () => {
+          this.getWidgets();
+        }
+
+        store.onerror = (err) => {
+          console.log(err);
+        }
+
+      })
   }
 
 }

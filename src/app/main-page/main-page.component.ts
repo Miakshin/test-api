@@ -34,7 +34,7 @@ export class MainPageComponent implements OnInit {
   }
 
   deleteCity():void{
-    this.deleteWidget("Kiev")
+    this.service.deleteWidget()
   }
 
   refreshCity(): void{
