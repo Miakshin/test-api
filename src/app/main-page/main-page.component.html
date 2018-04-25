@@ -5,6 +5,7 @@
   <form class="widget-input">
     <input type="text" placeholder="input a city" #input>
     <input type="button"  value="add" (click)="addCity(input.value)"/>
+    <input type="button" value ="delete" (click)="deleteCity()" />
   </form>
   <div *ngFor="let widget of widgets" class="widget" >
     <p>City : {{ widget.name }}</p>
