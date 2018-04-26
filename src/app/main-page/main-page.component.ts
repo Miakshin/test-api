@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import{ MainPageService } from './main-page.service';
+import { Component, OnInit, OnDestroy} from '@angular/core';
+import { MainPageService } from './main-page.service';
 
 import {Widget} from './widget';
 
@@ -11,8 +11,11 @@ import {Widget} from './widget';
 export class MainPageComponent implements OnInit {
 
   widgets : Widget[];
+  inputVal : string;
 
-  constructor( private service : MainPageService ) { }
+  constructor( private service : MainPageService ) {
+    this.inputVal = ""
+  }
 
   ngOnInit() {
     this.service.currentWetherData
@@ -25,20 +28,26 @@ export class MainPageComponent implements OnInit {
       });
   }
 
+  ngOnDestroy():void{
+    this.service.unsubscribeWetherData()
+  }
+
   getData() :void {
     this.service.getWidgets()
   }
 
-  addCity(city): void{
-    this.service.addWidget(city)
+  addCity(): void{
+    this.service.addWidget(this.inputVal,
+      ()=>{
+      this.inputVal = ""})
   }
 
-  deleteCity():void{
-    this.service.deleteWidget()
+  deleteCity(city):void{
+    this.service.deleteWidget(city)
   }
 
-  refreshCity(): void{
-
+  refreshCity(city): void{
+    this.service.refreshWidget(city);
   }
 
 }

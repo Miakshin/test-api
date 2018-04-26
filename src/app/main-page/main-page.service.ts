@@ -27,6 +27,10 @@ export class MainPageService {
     this.wetherSource.next(newData);
   }
 
+  unsubscribeWetherData(): void{
+    this.wetherSource.complete();
+  }
+
   dbOpen(): Promise<any> {
     return new Promise((res, rej) => {
       const request = this.indexedDB.open(this.baseName , 1);
@@ -52,7 +56,7 @@ export class MainPageService {
 
   }
 
-  addWidget (city): void {
+  addWidget (city,cb): void {
     this.http.get(`${this.url}${city}${this.key}`)
       .subscribe((data)=>{
         const store : any = this.db.transaction([this.storeName], "readwrite")
@@ -60,6 +64,7 @@ export class MainPageService {
         .add(data);
         store.onsuccess = () => {
           this.getWidgets();
+          cb();
         }
         store.onerror = (err) => {
           console.log(err);

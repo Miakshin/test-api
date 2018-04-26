@@ -1,13 +1,35 @@
-<header>
-  <h1> Get weather from api</h1>
+<header class="header">
+  <h1 class="title"> Get weather from api</h1>
 </header>
 <main>
   <form class="widget-input">
-    <input type="text" placeholder="input a city" #input>
-    <input type="button"  value="add" (click)="addCity(input.value)"/>
-    <input type="button" value ="delete" (click)="deleteCity()" />
+    <input type="text" placeholder="input a city" [(ngModel)]="inputVal" name="city-adder">
+    <input type="button"  value="add" (click)="addCity()"/>
   </form>
-  <div *ngFor="let widget of widgets" class="widget" >
-    <p>City : {{ widget.name }}</p>
+  <div class="wether-list" *ngIf="widgets.length > 0">
+    <div class="widget" *ngFor="let widget of widgets">
+      <header>
+        <h2>
+          {{widget.name}}
+        </h2>
+      </header>
+      <span class="sprite sprite-{{widget.weather[0].icon}}"></span>
+      <p>
+        {{(widget.main.temp - 273).toFixed(2)}}&#176;C
+      </p>
+      <p>
+        {{widget.weather[0].description}}
+      </p>
+      <p>wind: {{widget.wind.speed}} m/s
+        <span class="arrow" style="transform: rotate({{widget.wind.deg}}deg)">&uArr;</span>
+      </p>
+      <footer class="widget__footer">
+        <input type="button"  (click)="refreshCity(widget.name)" class="btn-refresh"/>
+        <input type="button"  (click)="deleteCity(widget.name)" class="btn-delete"/>
+      </footer>
+    </div>
+    <div class="wether-list" *ngIf="widgets.length === 0">
+
+    </div>
   </div>
 </main>
