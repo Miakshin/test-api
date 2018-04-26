@@ -9,8 +9,7 @@ import { Widget } from './widget';
 
 export class MainPageService {
 
-  IDBTransaction :any  = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
-  indexedDB : any = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+  indexedDB : any = window.indexedDB
   baseName :string = "wetherBase";
 	storeName :string	= "wetherStore";
   url : string = "http://api.openweathermap.org/data/2.5/weather?q=";
