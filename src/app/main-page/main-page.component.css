@@ -6,7 +6,7 @@
 }
 .title{
   font-size: 22px;
-  margin-left: 5%;
+  margin-left: 50px;
   margin-top: 9px;
   color: #656464;
 }
@@ -43,10 +43,13 @@
 .widget{
   width: 200px;
   height: 250px;
-  margin: 20px 5%;
+  margin: 20px 0px 20px 50px;
   box-shadow: 0px 6px 16px silver;
   color: #656464;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 h2{
   margin: 5px 0px;
@@ -54,13 +57,14 @@ h2{
   text-align: center;
 }
 [class^="btn"]{
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
   background-color: #ffffff00;
   border: 0px;
+  margin: 5px 2.5px;
 }
 .btn-delete{
   background-image: url(../../assets/icons/delete.png);
@@ -69,8 +73,6 @@ h2{
   background-image: url(../../assets/icons/refresh.png);
 }
 .widget__footer{
-  position: absolute;
-  bottom: 0px;
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -80,6 +82,36 @@ h2{
 .widget-input input[type="button"]:active{
   transform: translateY(2px);
 }
+.widget__main p{
+  padding: 5px 0px;
+  font-weight: 500;
+}
+.search{
+  position: absolute;
+  top: 45px;
+  right: 20px;
+  width: 15%;
+}
+.search__by-name{
+  display: inline-block;
+  height: 30px;
+  width: 100%;
+  border: 0px;
+  border-bottom: 2px solid silver;
+}
+.search::before{
+  position: absolute;
+  right: 100%;
+  top:3px;
+  content: "";
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/icons/search.png);
+}
 
 /* imgs */
 
@@ -87,6 +119,7 @@ h2{
 background-image: url(https://i.imgur.com/uddAcr4.png);
 background-repeat: no-repeat;
 display: block;
+margin: 0px auto;
 }
 
 .sprite-01d {

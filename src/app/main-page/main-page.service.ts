@@ -56,7 +56,7 @@ export class MainPageService {
 
   }
 
-  addWidget (city,cb): void {
+  addWidget (city,cb,errCb): void {
     this.http.get(`${this.url}${city}${this.key}`)
       .subscribe((data)=>{
         const store : any = this.db.transaction([this.storeName], "readwrite")
@@ -67,10 +67,12 @@ export class MainPageService {
           cb();
         }
         store.onerror = (err) => {
-          console.log(err);
+          errCb(err.error.message)
         }
 
-    })
+    },
+        (err)=>{errCb(err.error.message)}
+      )
   }
 
   getWidgets() : Promise<any> {

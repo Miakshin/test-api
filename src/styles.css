@@ -6,3 +6,17 @@
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
 }
+.err{
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  display: block;
+  height: 100px;
+  width: 50%;
+  background: #ff00000f;
+  box-shadow: 1px 6px 19px silver;
+  color: #656464;
+  text-align: center;
+  padding-top: 10px;
+  transform:translateX(-50%);
+}
