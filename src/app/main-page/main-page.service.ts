@@ -31,11 +31,11 @@ export class MainPageService {
   }
 
   dbOpen(): Promise<any> {
-    return new Promise((res, rej) => {
+    return new Promise((response, rej) => {
       const request = this.indexedDB.open(this.baseName , 1);
       request.onsuccess = () => {
         this.db = request.result;
-        res(this.db)
+        response(this.db)
       }
 
       request.onerror = (err) => {
