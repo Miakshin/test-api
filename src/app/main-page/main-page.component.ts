@@ -33,6 +33,7 @@ export class MainPageComponent implements OnInit {
       .then(()=>{
         this.getData()
       })
+      .catch(console.log)
   }
 
   ngOnDestroy():void{

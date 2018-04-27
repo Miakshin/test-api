@@ -43,12 +43,10 @@ export class MainPageService {
       }
 
       request.onupgradeneeded = (event) =>{
-        this.db  = event.target.result;
-
-        if(!this.db.objectStoreNames.contains(this.storeName)){
-          this.db.createObjectStore(this.storeName, { keyPath: "name" });
+        if(!event.target.result.objectStoreNames.contains(this.storeName)){
+          event.target.result.createObjectStore(this.storeName, { keyPath: "name" });
         }
-        res(this.db)
+        this.dbOpen()
       }
 
     })
