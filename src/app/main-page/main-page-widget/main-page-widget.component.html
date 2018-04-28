@@ -1,0 +1,23 @@
+<div class="widget" >
+  <header>
+    <h2>
+      {{data.name}}
+    </h2>
+  </header>
+  <span class="sprite sprite-{{data.weather[0].icon}}"></span>
+  <section class="widget__main">
+    <p>
+      {{temperature | number}}&#176;C
+    </p>
+    <p>
+      {{data.weather[0].description}}
+    </p>
+    <p>wind: {{data.wind.speed}} m/s
+      <span class="arrow" [ngStyle]="{'transform': transformValue}">&uArr;</span>
+    </p>
+  </section>
+  <footer class="widget__footer">
+    <input type="button"  (click)="refreshCity(data.name)" class="btn-refresh"/>
+    <input type="button"  (click)="deleteCity(data.name)" class="btn-delete"/>
+  </footer>
+</div>

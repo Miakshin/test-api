@@ -17,32 +17,14 @@
       (keyup)="onChangeSearch()"/>
   </div>
   </form>
-  <div class="wether-list" *ngIf="widgets.length > 0">
-    <div class="widget" *ngFor="let widget of filteredWidgets">
-      <header>
-        <h2>
-          {{widget.name}}
-        </h2>
-      </header>
-      <span class="sprite sprite-{{widget.weather[0].icon}}"></span>
-      <section class="widget__main">
-        <p>
-          {{(widget.main.temp - 273).toFixed(2)}}&#176;C
-        </p>
-        <p>
-          {{widget.weather[0].description}}
-        </p>
-        <p>wind: {{widget.wind.speed}} m/s
-          <span class="arrow" style="transform: rotate({{widget.wind.deg}}deg)">&uArr;</span>
-        </p>
-      </section>
-      <footer class="widget__footer">
-        <input type="button"  (click)="refreshCity(widget.name)" class="btn-refresh"/>
-        <input type="button"  (click)="deleteCity(widget.name)" class="btn-delete"/>
-      </footer>
-    </div>
-    <div class="wether-list" *ngIf="widgets.length === 0">
-      <h2> Add a new city</h2>
-    </div>
+  <div class="wether-list" *ngIf="filteredWidgets.length > 0">
+    <app-main-page-widget
+      *ngFor="let widget of filteredWidgets"
+      [data]=widget
+    >
+    </app-main-page-widget>
+  </div>
+  <div class="wether-list" *ngIf="widgets.length === 0">
+    <h2> Add a new city</h2>
   </div>
 </main>

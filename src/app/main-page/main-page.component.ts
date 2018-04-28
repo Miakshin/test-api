@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { MainPageService } from './main-page.service';
-import { OnChanges } from '@angular/core';
 
 import {Widget} from './widget';
 
@@ -15,8 +14,6 @@ export class MainPageComponent implements OnInit {
   inputVal : string;
   filteredWidgets : Widget[];
   filterVal: string;
-  // flag: string;
-  // countries : string[] =[];
 
   constructor( private service : MainPageService ) {
     this.inputVal = "";
@@ -50,22 +47,6 @@ export class MainPageComponent implements OnInit {
       this.inputVal = ""},
       this.printErr)
   }
-
-  deleteCity(city):void{
-    this.service.deleteWidget(city)
-  }
-
-  refreshCity(city): void{
-    this.service.refreshWidget(city);
-  }
-
-  // getCities(data){
-  //   data.reduce((acum,curr)=>{
-  //     if(acum.indexOf(curr.sys.country) === -1){
-  //       return [...acum,curr]
-  //     }
-  //   },[])
-  // }
 
   onChangeSearch(e){
     this.filterData();
