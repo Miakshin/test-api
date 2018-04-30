@@ -102,6 +102,10 @@ h2{
     width:50px;
   }
 }
+.wether-list_empty{
+  font-size: 22px;
+  color: #656464;
+}
 @media (max-width: 427px){
   .wether-list{
     justify-content: space-around;

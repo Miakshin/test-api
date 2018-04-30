@@ -12,7 +12,6 @@ export class MainPageComponent implements OnInit {
 
   widgets : Widget[];
   inputVal : string;
-  filteredWidgets : Widget[];
   filterVal: string;
 
   constructor( private service : MainPageService ) {
@@ -24,7 +23,6 @@ export class MainPageComponent implements OnInit {
     this.service.currentWetherData
       .subscribe((widgets) => {
         this.widgets = widgets;
-        this.filterData();
       })
     this.service.dbOpen()
       .then(()=>{
@@ -42,25 +40,24 @@ export class MainPageComponent implements OnInit {
   }
 
   addCity(): void{
-    this.service.addWidget(this.inputVal,
-      ()=>{
-      this.inputVal = ""},
-      this.printErr)
-  }
-
-  onChangeSearch(e){
-    this.filterData();
-  }
-
-  filterData():void{
-    if(this.filterVal.length < 0 ){
-      this.filteredWidgets= this.widgets
+    if(this.checkCityInWidgets(this.inputVal)){
+      this.printErr(" This city is already added")
     }else{
-      const regExp : RegExp = new RegExp(this.filterVal, "i");
-      this.filteredWidgets= this.widgets.filter((widget)=> {
-        return widget.name.search(regExp) === -1 ? false : true
-      })
+      this.service.addWidget(this.inputVal,
+        ()=>{
+        this.inputVal = ""},
+        this.printErr)
     }
+  }
+
+  checkCityInWidgets(city: string): boolean{
+    const serchinCity = city.toLowerCase();
+    const result =  this.widgets.findIndex((widget)=> {
+      return widget.name.toLowerCase() === serchinCity ?
+        true :
+        false
+    });
+    return result === -1 ?  false : true
   }
 
   printErr(text){

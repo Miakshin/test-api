@@ -13,18 +13,16 @@
       name="search-by-name"
       class="search__by-name"
       type="text"
-      placeholder="start typing city name"
-      (keyup)="onChangeSearch()"/>
+      placeholder="start typing city name"/>
   </div>
   </form>
-  <div class="wether-list" *ngIf="filteredWidgets.length > 0">
+  <div class="wether-list">
     <app-main-page-widget
-      *ngFor="let widget of filteredWidgets"
-      [data]=widget
-    >
+      *ngFor="let widget of widgets | filter:filterVal"
+      [data]="widget">
     </app-main-page-widget>
   </div>
-  <div class="wether-list" *ngIf="widgets.length === 0">
+  <div class="wether-list_empty" *ngIf="widgets.length === 0">
     <h2> Add a new city</h2>
   </div>
 </main>

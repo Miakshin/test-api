@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './main-page/filter.pipe';
 
 
 import { AppComponent } from './app.component';
@@ -14,7 +15,8 @@ import { MainPageWidgetComponent } from './main-page/main-page-widget/main-page-
   declarations: [
     AppComponent,
     MainPageComponent,
-    MainPageWidgetComponent
+    MainPageWidgetComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
