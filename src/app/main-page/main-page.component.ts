@@ -66,7 +66,7 @@ export class MainPageComponent implements OnInit {
       const target = document.querySelector(".header");
 
       div.className = "err";
-      div.innerHTML = text;
+      div.textContent = text;
       target.insertBefore(div, document.querySelector(".title"));
 
       setTimeout(()=>{
