@@ -5,6 +5,7 @@ import { MainPageService } from './main-page/main-page.service';
 import { MainPageWidgetComponent } from './main-page/main-page-widget/main-page-widget.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './main-page/filter.pipe';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         MainPageComponent,
-        MainPageWidgetComponent
+        MainPageWidgetComponent,
+        FilterPipe
       ],
       imports: [
         FormsModule,
